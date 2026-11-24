@@ -45,3 +45,28 @@ def listar_livros():
             print("Quantidade:", livro["quantidade"])
         
             print()
+
+def buscar_livro():
+    #Função para buscar livros no acervo.
+
+  codigo_livro = int(input("Digite o código do livro: "))
+
+  encontrado = False
+
+  for livro in livros:
+     if codigo_livro == livro["codigo"]:
+        encontrado = True
+
+        print("O livro foi encontrado no acervo.")
+
+        print("Código:", livro["codigo"])
+        print("Título:", livro["titulo"])
+        print("Autor:", livro["autor"])
+        print("Preço:", livro["preco"])
+        print("Quantidade:", livro["quantidade"])
+
+  if not encontrado:
+    print("O livro não foi encontrado no acervo.")
+
+
+
