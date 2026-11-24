@@ -1,6 +1,7 @@
 from dados import livros
 
 def cadastrar_livro():
+    #Função para realizar o cadastro do livro.
 
   try:
     titulo = input("Digite o título do livro: ")
@@ -26,3 +27,21 @@ def cadastrar_livro():
         }
 
         livros.append(novo_livro)
+
+def listar_livros():
+    #Função para mostrar os livros cadastrados no acervo.
+
+    if not livros:
+        print("O acervo está vazio.")
+
+    else:
+        print("Livros cadastrados.")
+
+        for livro in livros:
+            print("Código:", livro["codigo"])
+            print("Título:", livro["titulo"])
+            print("Autor:", livro["autor"])
+            print("Preço:", livro["preco"])
+            print("Quantidade:", livro["quantidade"])
+        
+            print()
