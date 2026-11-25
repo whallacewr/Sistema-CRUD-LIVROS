@@ -10,7 +10,7 @@ def cadastrar_livro():
     quantidade = int(input("Digite a quantidade de livros: "))
 
   except ValueError:
-    print("Digite os valores numéricos corretos!")
+    print("Digite os valores numéricos corretos.")
 
   else:
     if titulo == "" or autor == "" or preco < 0  or quantidade < 0:
@@ -35,7 +35,7 @@ def listar_livros():
         print("O acervo está vazio.")
 
     else:
-        print("Livros cadastrados.")
+        print("Livros cadastrados no acervo.")
 
         for livro in livros:
             print("Código:", livro["codigo"])
@@ -67,6 +67,46 @@ def buscar_livro():
 
   if not encontrado:
     print("O livro não foi encontrado no acervo.")
+
+def atualizar_livro():
+    #Função para atualizar os dados de um livro.
+
+    codigo_livro = int(input("Digite o código do livro: "))
+    
+    encontrado = False
+    
+    for livro in livros:
+         if codigo_livro == livro["codigo"]:
+            encontrado = True
+
+            print("O livro foi encontrado no acervo, agora digite os novos dados: ")
+
+            try:
+                    novo_titulo = input("Digite o título do novo livro: ")
+                    novo_autor = input("Digite o nome do autor do novo livro: ")
+                    nova_quantidade = int(input("Digite a quantidade do novo livro: "))
+                    novo_preco = float(input("Digite o preço do novo livro: "))
+
+                    if novo_titulo.strip() == "" or novo_autor.strip() == "" or novo_preco < 0  or nova_quantidade < 0:
+
+                        print("Os campos título/autor não podem estar vazios e os " \
+                                                "campos preço/quantidade não podem ser menores que 0.")
+
+                    else:
+                          livro["titulo"] = novo_titulo
+                          livro["autor"] = novo_autor
+                          livro["quantidade"] = nova_quantidade
+                          livro["preco"] = novo_preco
+
+                          print("Parabéns! A atualização foi concluída. ")
+                        
+
+            except ValueError:
+               print("Digite os valores numéricos corretos.")
+         
+    if not encontrado:
+      print("O livro não foi encontrado no acervo.")
+
 
 
 
