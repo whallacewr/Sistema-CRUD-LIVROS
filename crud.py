@@ -35,7 +35,7 @@ def listar_livros():
         print("O acervo está vazio.")
 
     else:
-        print("Livros cadastrados no acervo.")
+        print("LISTA DE LIVROS CADASTRADOS NO ACERVO: \n")
 
         for livro in livros:
             print("Código:", livro["codigo"])
@@ -107,6 +107,23 @@ def atualizar_livro():
     if not encontrado:
       print("O livro não foi encontrado no acervo.")
 
+def excluir_livro():
+    #Função para excluir um livro do acervo.
+
+    codigo_do_livro = int(input("Digite o código do livro: "))
+
+    encontrado = False
+
+    for livro in livros:
+     if codigo_do_livro == livro["codigo"]:
+        encontrado = True
+
+        livros.remove(livro)
+        print("Ótimo. A exclusão foi feita com sucesso.")
+        break
+
+    if not encontrado:
+      print("O livro não foi encontrado no acervo.")
 
 
 
