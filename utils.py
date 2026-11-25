@@ -14,3 +14,8 @@ def validar_decimal(valor):
 
 def validar_texto(valor):
     return bool(valor.strip()) 
+
+def validar_isbn(isbn):
+    isbn = isbn.strip()
+
+    return isbn.isdigit() and len(isbn) == 13
