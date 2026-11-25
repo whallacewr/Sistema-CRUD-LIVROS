@@ -11,4 +11,6 @@ def validar_decimal(valor):
         return True
     except ValueError:
         return False
- 
+
+def validar_texto(valor):
+    return bool(valor.strip()) 
