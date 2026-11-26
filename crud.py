@@ -1,7 +1,7 @@
 from dados import livros
 
 def cadastrar_livro():
-    #Função para realizar o cadastro do livro.
+  """Função para realizar o cadastro do livro."""
 
   try:
     titulo = input("Digite o título do livro: ")
@@ -29,7 +29,7 @@ def cadastrar_livro():
         livros.append(novo_livro)
 
 def listar_livros():
-    #Função para mostrar os livros cadastrados no acervo.
+    """Função para mostrar os livros cadastrados no acervo."""
 
     if not livros:
         print("O acervo está vazio.")
@@ -47,7 +47,7 @@ def listar_livros():
             print()
 
 def buscar_livro():
-    #Função para buscar livros no acervo.
+  """Função para buscar livros no acervo."""
 
   codigo_livro = int(input("Digite o código do livro: "))
 
@@ -68,8 +68,8 @@ def buscar_livro():
   if not encontrado:
     print("O livro não foi encontrado no acervo.")
 
-def atualizar_livro():
-    #Função para atualizar os dados de um livro.
+def editar_livro():
+    """Função para editar os dados de um livro."""
 
     codigo_livro = int(input("Digite o código do livro: "))
     
@@ -108,7 +108,7 @@ def atualizar_livro():
       print("O livro não foi encontrado no acervo.")
 
 def excluir_livro():
-    #Função para excluir um livro do acervo.
+    """Função para excluir um livro do acervo."""
 
     codigo_do_livro = int(input("Digite o código do livro: "))
 
