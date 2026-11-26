@@ -1,4 +1,6 @@
-from dados import livros
+from arquivo import carregar_livros, salvar_livros
+
+livros = carregar_livros()
 
 def cadastrar_livro():
   """Função para realizar o cadastro do livro."""
@@ -18,15 +20,22 @@ def cadastrar_livro():
         "campos preço/quantidade não podem ser menores que 0.")
 
     else:
-        novo_livro = { 
-        "codigo": len(livros) + 1,
-        "titulo": titulo,
-        "autor": autor,
-        "preco": preco,
-        "quantidade": quantidade
+      maior_codigo = 0
+
+      for livro in livros:
+        if livro["codigo"] > maior_codigo:
+          maior_codigo = livro["codigo"]
+
+      novo_livro = { 
+      "codigo": maior_codigo + 1,
+      "titulo": titulo,
+      "autor": autor,
+      "preco": preco,
+      "quantidade": quantidade
         }
 
-        livros.append(novo_livro)
+      livros.append(novo_livro)
+      salvar_livros(livros)
 
 def listar_livros():
     """Função para mostrar os livros cadastrados no acervo."""
@@ -35,7 +44,7 @@ def listar_livros():
         print("O acervo está vazio.")
 
     else:
-        print("LISTA DE LIVROS CADASTRADOS NO ACERVO: \n")
+        print("LISTA DE LIVROS CADASTRADOS NO ACERVO. \n")
 
         for livro in livros:
             print("Código:", livro["codigo"])
@@ -84,8 +93,9 @@ def editar_livro():
             try:
                     novo_titulo = input("Digite o título do novo livro: ")
                     novo_autor = input("Digite o nome do autor do novo livro: ")
-                    nova_quantidade = int(input("Digite a quantidade do novo livro: "))
                     novo_preco = float(input("Digite o preço do novo livro: "))
+                    nova_quantidade = int(input("Digite a quantidade do novo livro: "))
+                   
 
                     if novo_titulo.strip() == "" or novo_autor.strip() == "" or novo_preco < 0  or nova_quantidade < 0:
 
@@ -95,8 +105,11 @@ def editar_livro():
                     else:
                           livro["titulo"] = novo_titulo
                           livro["autor"] = novo_autor
-                          livro["quantidade"] = nova_quantidade
                           livro["preco"] = novo_preco
+                          livro["quantidade"] = nova_quantidade
+                        
+
+                          salvar_livros(livros)
 
                           print("Parabéns! A atualização foi concluída. ")
                         
@@ -119,11 +132,10 @@ def excluir_livro():
         encontrado = True
 
         livros.remove(livro)
+        salvar_livros(livros)
+
         print("Ótimo. A exclusão foi feita com sucesso.")
         break
 
     if not encontrado:
       print("O livro não foi encontrado no acervo.")
-
-
-
