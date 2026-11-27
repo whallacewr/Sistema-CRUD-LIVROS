@@ -61,14 +61,25 @@ def listar_livros():
     else:
         print("LISTA DE LIVROS CADASTRADOS NO ACERVO. \n")
 
+        print(
+        f"{'CÓDIGO':<8} | {'TÍTULO':<25} | {'AUTOR':<25} | "
+        f"{'GÊNERO':<12} | {'PREÇO':<10} | {'QUANTIDADE':<8}"
+        )
+        print("-" * 110)
+
         for livro in livros:
-            print("Código:", livro["codigo"])
-            print("Título:", livro["titulo"])
-            print("Autor:", livro["autor"])
-            print("Preço:", livro["preco"])
-            print("Quantidade:", livro["quantidade"])
-        
-            print()
+            titulo = livro["titulo"]
+
+            if len(titulo) > 25:
+                  titulo = titulo[:22] + "..."
+
+            preco_duas_casas = f"R$ {livro['preco']:.2f}"
+            #Variável para o preço ajustado para duas casas decimais.
+
+            print(
+                f"{livro['codigo']:<8} | {titulo:<25} | {livro['autor']:<25} | "
+                f"{livro['genero']:<12} | {preco_duas_casas:<10} | {livro['quantidade']:<8}"
+          )
 
 def buscar_livro():
   """Função para buscar livros no acervo."""

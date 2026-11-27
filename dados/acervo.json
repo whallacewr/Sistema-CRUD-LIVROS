@@ -3,6 +3,9 @@
         "codigo": 1,
         "titulo": "Dom Casmurro",
         "autor": "Machado de Assis",
+        "isbn": "9786588001615",
+        "genero": "Romance",
+        "estado": "Regular",
         "preco": 25.0,
         "quantidade": 3
     },
@@ -10,6 +13,9 @@
         "codigo": 2,
         "titulo": "O Pequeno Principe",
         "autor": "Antoine de Saint-Exupery",
+        "isbn": "9788574066776",
+        "genero": "Infantil",
+        "estado": "Ótimo",
         "preco": 20.0,
         "quantidade": 5
     },
@@ -17,6 +23,9 @@
         "codigo": 3,
         "titulo": "Memórias Póstumas de Brás Cubas",
         "autor": "Machado de Assis",
+        "isbn": "9788582850015",
+        "genero": "Romance",
+        "estado": "Ótimo",
         "preco": 35.0,
         "quantidade": 12
     },
@@ -24,21 +33,22 @@
         "codigo": 4,
         "titulo": "Cem Anos de Solidão",
         "autor": "Gabriel García Márquez",
+        "isbn": "9788501012074",
+        "genero": "Romance",
+        "estado": "Bom",
         "preco": 28.0,
         "quantidade": 9
     },
+    
     {
-        "codigo": 5,
+         "codigo": 5,
         "titulo": "O Cemitério",
         "autor": "Stephen King",
+        "isbn": "9788581050393",
+        "genero": "Ficção",
+        "estado": "Ótimo",
         "preco": 90.0,
         "quantidade": 5
-    },
-    {
-        "codigo": 6,
-        "titulo": "Rauan",
-        "autor": "Peixonautas",
-        "preco": 56.78,
-        "quantidade": 32
     }
+
 ]
