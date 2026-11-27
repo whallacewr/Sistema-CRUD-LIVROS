@@ -1,3 +1,21 @@
+GENEROS = (
+   "Romance",
+   "Ficção",
+   "Cordel",
+   "Poesia",
+   "Didático",
+   "Infantil",
+   "Biografia",
+   "Outros"
+)
+
+ESTADOS_CONSERVACAO = (
+   "Ótimo",
+   "Bom",
+   "Regular"
+)
+
+
 def validar_inteiro(valor):
     try:
         int(valor)
@@ -37,4 +55,8 @@ def validar_quantidade(valor):
       return int(valor) >= 0
 
    return False
-         
+
+def validar_genero(genero):
+   return genero in GENEROS
+
+    
