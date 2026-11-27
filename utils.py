@@ -59,4 +59,5 @@ def validar_quantidade(valor):
 def validar_genero(genero):
    return genero in GENEROS
 
-    
+def validar_estado(estado):
+   return estado in ESTADOS_CONSERVACAO
