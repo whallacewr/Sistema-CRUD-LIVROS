@@ -31,4 +31,10 @@ def validar_preco(valor):
     
     except ValueError:
      return False
+
+def validar_quantidade(valor):
+   if validar_inteiro(valor):
+      return int(valor) >= 0
+
+   return False
          
