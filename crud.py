@@ -1,4 +1,5 @@
 from arquivo import carregar_livros, salvar_livros
+from utils import validar_isbn
 
 livros = carregar_livros()
 
@@ -6,36 +7,50 @@ def cadastrar_livro():
   """Função para realizar o cadastro do livro."""
 
   try:
-    titulo = input("Digite o título do livro: ")
-    autor = input("Digite o autor do livro: ")
-    preco = float(input("Digite o preço do livro: "))
-    quantidade = int(input("Digite a quantidade de livros: "))
+        titulo = input("Digite o título do livro: ")
+        autor = input("Digite o autor do livro: ")
+        isbn = input("Digite o ISBN do livro: ")
+        genero = input("Digite o gênero do livro: ")
+        estado = input("Digite o estado de conservação do livro: ")
+        preco = float(input("Digite o preço do livro: "))
+        quantidade = int(input("Digite a quantidade de livros: "))
 
   except ValueError:
-    print("Digite os valores numéricos corretos.")
+        print("Digite os valores numéricos corretos.")
 
   else:
-    if titulo == "" or autor == "" or preco < 0  or quantidade < 0:
-        print("Os campos título/autor não podem estar vazios e os " \
-        "campos preço/quantidade não podem ser menores que 0.")
+        if not validar_isbn(isbn):
+            print("O ISBN está inválido. Por favor digite exatamente 13 números.")
 
-    else:
-      maior_codigo = 0
+        elif not titulo.strip() or not autor.strip() or preco <= 0 or quantidade < 0:
+            print("Os campos título/autor não podem estar vazios, o campo "
+                  "preço deve ser maior que 0 e a quantidade não pode ser menor que 0.")
 
-      for livro in livros:
-        if livro["codigo"] > maior_codigo:
-          maior_codigo = livro["codigo"]
+        else:
+          for livro in livros:
+            if livro["isbn"] == isbn:
+                print("Esse ISBN já está cadastrado no acervo, por favor digite outro ISBN. ")
+                return 
 
-      novo_livro = { 
-      "codigo": maior_codigo + 1,
-      "titulo": titulo,
-      "autor": autor,
-      "preco": preco,
-      "quantidade": quantidade
-        }
+          maior_codigo = 0
 
-      livros.append(novo_livro)
-      salvar_livros(livros)
+          for livro in livros:
+            if livro["codigo"] > maior_codigo:
+              maior_codigo = livro["codigo"]
+
+          novo_livro = { 
+          "codigo": maior_codigo + 1,
+          "titulo": titulo,
+          "autor": autor,
+          "isbn": isbn,
+          "genero": genero,
+          "estado": estado,
+          "preco": preco,
+          "quantidade": quantidade
+            }
+
+          livros.append(novo_livro)
+          salvar_livros(livros)
 
 def listar_livros():
     """Função para mostrar os livros cadastrados no acervo."""
