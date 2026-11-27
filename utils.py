@@ -19,3 +19,22 @@ def validar_isbn(isbn):
     isbn = isbn.strip()
 
     return isbn.isdigit() and len(isbn) == 13
+
+def validar_preco(valor):
+    try:
+     preco = float(valor)
+
+     if preco > 0:
+        return True
+     else:
+        return False
+    
+    except ValueError:
+     return False
+
+def validar_quantidade(valor):
+   if validar_inteiro(valor):
+      return int(valor) >= 0
+
+   return False
+         
