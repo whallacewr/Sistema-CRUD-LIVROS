@@ -46,4 +46,3 @@ INTEGRANTES:
 - Integrante 1: [Whallace Rauan Soares da Costa / https://github.com/whallacewr] 
 - Integrante 2: [Erik dos Santos / https://github.com/ryzer12271]
 
-STATUS DO PROJETO:

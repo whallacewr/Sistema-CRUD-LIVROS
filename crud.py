@@ -67,7 +67,7 @@ def listar_livros():
         print("O acervo está vazio.")
 
     else:
-        print("LISTA DE LIVROS CADASTRADOS NO ACERVO. \n")
+        print("LISTA DE LIVROS CADASTRADOS NO ACERVO: \n")
 
         print(
             f"{'CÓDIGO':<8} | {'TÍTULO':<25} | {'AUTOR':<25} | "
@@ -160,7 +160,12 @@ def buscar_livro():
 def editar_livro():
     """Função para editar os dados de um livro."""
 
-    codigo_livro = int(input("Digite o código do livro: "))
+    try:
+        codigo_livro = int(input("Digite o código do livro: "))
+
+    except ValueError:
+        print("Código inválido. Só números são aceitos.")
+        return
 
     encontrado = False
 
@@ -168,29 +173,93 @@ def editar_livro():
         if codigo_livro == livro["codigo"]:
             encontrado = True
 
+            print("Livro encontrado.")
+            print("Código:", livro["codigo"])
+            print("Título:", livro["titulo"])
+            print("Autor:", livro["autor"])
+            print("ISBN:", livro["isbn"])
+            print("Gênero:", livro["genero"])
+            print("Estado de conservação:", livro["estado"])
+            print("Preço:", livro["preco"])
+            print("Quantidade:", livro["quantidade"])
+
             print("O livro foi encontrado no acervo, agora digite os novos dados: ")
 
             try:
-                novo_titulo = input("Digite o título do novo livro: ")
-                novo_autor = input("Digite o nome do autor do novo livro: ")
-                novo_preco = float(input("Digite o preço do novo livro: "))
-                nova_quantidade = int(input("Digite a quantidade do novo livro: "))
+                novo_titulo = (
+                    input("Digite o título do novo livro: ") or livro["titulo"]
+                )
+                novo_autor = (
+                    input("Digite o nome do autor do novo livro: ") or livro["autor"]
+                )
+                novo_isbn = input("Digite o novo ISBN do livro: ") or livro["isbn"]
+                novo_genero = (
+                    input("Digite o gênero do novo livro: ") or livro["genero"]
+                )
+                novo_estado = (
+                    input("Digite o estado de conservação do novo livro: ")
+                    or livro["estado"]
+                )
+                novo_preco = float(
+                    input("Digite o preço do novo livro: ") or livro["preco"]
+                )
+                nova_quantidade = int(
+                    input("Digite a quantidade do novo livro: ") or livro["quantidade"]
+                )
+                # Caso o usuário aperte 'enter', o valor será mantido.
+
+                if novo_genero not in (
+                    "Romance",
+                    "Ficção",
+                    "Cordel",
+                    "Poesia",
+                    "Didático",
+                    "Infantil",
+                    "Biografia",
+                    "Outros",
+                ):
+
+                    print("O gênero é inválido.")
+                    return
+
+                if novo_estado not in ("Ótimo", "Bom", "Regular"):
+                    print("O estado de conservação é inválido.")
+                    return
+
+                if not validar_isbn(novo_isbn):
+                    print(
+                        "O ISBN está inválido. Por favor digite exatamente 13 números."
+                    )
+                    return
+
+                for outro_livro in livros:
+                    if (
+                        outro_livro["isbn"] == novo_isbn
+                        and outro_livro["codigo"] != codigo_livro
+                    ):
+                        print(
+                            "Esse ISBN já pertence a outro livro. Por favor digite outro."
+                        )
+                        return
 
                 if (
                     novo_titulo.strip() == ""
                     or novo_autor.strip() == ""
-                    or novo_preco < 0
+                    or novo_preco <= 0
                     or nova_quantidade < 0
                 ):
 
                     print(
-                        "Os campos título/autor não podem estar vazios e os "
-                        "campos preço/quantidade não podem ser menores que 0."
+                        "Os campos título/autor não podem estar vazios, o campo "
+                        "preço tem que ser maior que 0 e a quantidade não pode ser menos que 0."
                     )
 
                 else:
                     livro["titulo"] = novo_titulo
                     livro["autor"] = novo_autor
+                    livro["isbn"] = novo_isbn
+                    livro["genero"] = novo_genero
+                    livro["estado"] = novo_estado
                     livro["preco"] = novo_preco
                     livro["quantidade"] = nova_quantidade
 

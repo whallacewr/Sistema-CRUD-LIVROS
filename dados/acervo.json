@@ -6,7 +6,7 @@
         "isbn": "9786588001615",
         "genero": "Romance",
         "estado": "Regular",
-        "preco": 25.0,
+        "preco": 59.89,
         "quantidade": 3
     },
     {
@@ -15,7 +15,7 @@
         "autor": "Antoine de Saint-Exupery",
         "isbn": "9788574066776",
         "genero": "Infantil",
-        "estado": "Ótimo",
+        "estado": "Bom",
         "preco": 20.0,
         "quantidade": 5
     },
@@ -36,12 +36,11 @@
         "isbn": "9788501012074",
         "genero": "Romance",
         "estado": "Bom",
-        "preco": 28.0,
+        "preco": 456.32,
         "quantidade": 9
     },
-    
     {
-         "codigo": 5,
+        "codigo": 5,
         "titulo": "O Cemitério",
         "autor": "Stephen King",
         "isbn": "9788581050393",
@@ -50,5 +49,4 @@
         "preco": 90.0,
         "quantidade": 5
     }
-
 ]
